@@ -7,20 +7,20 @@ using ModellenBureau2.Shared;
 
 namespace ModellenBureau2.Pages
 {
-    public partial class EmployeeDetail
+    public partial class CustomerDetail
     {
         [Parameter]
         public string Id { get; set; }
-        public Employee Employee { get; set; } = new Employee();
+        public Customer Customer { get; set; } = new Customer();
 
-        public IEnumerable<Employee> Employees { get; set; }
+        public IEnumerable<Customer> Customers { get; set; }
         public List<Country> Countries { get; set; }
 
         protected override Task OnInitializedAsync()
         {
             InitializeCountries();
-            InitializeEmployees();
-            Employee = Employees.FirstOrDefault(e => e.Id == int.Parse(Id));
+            InitializeCustomers();
+            Customer = Customers.FirstOrDefault(e => e.Id == int.Parse(Id));
 
             return base.OnInitializedAsync();
         }
@@ -36,7 +36,7 @@ namespace ModellenBureau2.Pages
             };
         }
 
-        private void InitializeEmployees()
+        private void InitializeCustomers()
         {
             var e1 = new Employee
             {
@@ -55,9 +55,7 @@ namespace ModellenBureau2.Pages
                 Zip = "1000"
             };
 
-            Employees = new List<Employee> { e1 };
+            Customers = new List<Employee> { e1 };
         }
     }
 }
-
- 

@@ -6,21 +6,10 @@ using System.Threading.Tasks;
 
 namespace ModellenBureau2.Shared
 {
-    public class Employee
+    public class Employee : Customer
     {
-        public int EmployeeId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Email { get; set; }
-        public string Street { get; set; }
-        public string Zip { get; set; }
-        public string City { get; set; }
-        public int CountryId { get; set; }
-        public Gender Gender { get; set; }
-
-
-
+        public int Weight { get; set; }
+        public int Height { get; set; }
 
     }
 

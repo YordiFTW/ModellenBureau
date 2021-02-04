@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ModellenBureau.Shared;
+using ModellenBureau2.Shared;
 
-namespace ModellenBureau.Pages
+namespace ModellenBureau2.Pages
 {
     public partial class EmployeeOverview
     {
+
         public IEnumerable<Employee> Employees { get; set; }
         public List<Country> Countries { get; set; }
 
@@ -15,6 +16,7 @@ namespace ModellenBureau.Pages
         {
             InitializeCountries();
             InitializeEmployees();
+            
 
             return base.OnInitializedAsync();
         }
@@ -38,7 +40,7 @@ namespace ModellenBureau.Pages
                 BirthDate = new DateTime(1989, 3, 11),
                 City = "Brussels",
                 Email = "bethany@modellenbureau.com",
-                EmployeeId = 1,
+                Id = 1,
                 FirstName = "Bethany",
                 LastName = "Smith",
                 Gender = Gender.Female,
