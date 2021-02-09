@@ -19,8 +19,6 @@ namespace ModellenBureau4.Pages
         {
 
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
-
-            var x = 3;
         }
 
 

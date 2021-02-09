@@ -43,7 +43,7 @@ namespace ModellenBureau4
             services.AddSingleton<WeatherForecastService>();
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             {
-                client.BaseAddress = new Uri("http://localhost:44340");
+                client.BaseAddress = new Uri("https://localhost:44340");
             });
             //services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             //{​
