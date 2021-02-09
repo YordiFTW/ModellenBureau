@@ -1,0 +1,36 @@
+﻿@page "/customeroverview"
+
+<h1 class="page-title">All Customers</h1>
+
+@if (Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+
+        <tr>
+            <th>Customer Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var customer in Customers)
+        {
+        <tr>
+            <td>@customer.Id</td>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>
+                <a href="@($"customerdetail/{customer.Id}")" class="btn btn-primary table-btn">
+                    Detail
+                </a>
+            </td>
+        </tr>
+        }
+
+</table>
+}
