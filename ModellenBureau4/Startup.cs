@@ -45,6 +45,10 @@ namespace ModellenBureau4
             {
                 client.BaseAddress = new Uri("https://localhost:44340");
             });
+            services.AddHttpClient<ICustomerDataService, CustomerDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340");
+            });
             //services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             //{​
             //    client.BaseAddress = new Uri("https://localhost:44340/");

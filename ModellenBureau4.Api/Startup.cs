@@ -42,6 +42,7 @@ namespace ModellenBureau4.Api
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             //services.AddSingleton<WeatherForecastService>();
         }
 

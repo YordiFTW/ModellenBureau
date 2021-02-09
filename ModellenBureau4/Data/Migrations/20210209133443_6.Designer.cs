@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ModellenBureau4.Data;
 
 namespace ModellenBureau4.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210209133443_6")]
+    partial class _6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,22 +282,6 @@ namespace ModellenBureau4.Data.Migrations
                     b.ToTable("Customers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Customer");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            BirthDate = new DateTime(1972, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Brussels2",
-                            CountryId = 1,
-                            Email = "bethany@bethanyspieshop2.com",
-                            FirstName = "Bethany2",
-                            Gender = 1,
-                            LastName = "Smith2",
-                            PhoneNumber = "324777888772",
-                            Street = "Grote Markt 12",
-                            Zip = "1002"
-                        });
                 });
 
             modelBuilder.Entity("ModellenBureau4.Shared.Employee", b =>

@@ -15,6 +15,7 @@ namespace ModellenBureau4.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Country> Countries { get; set; }
 
 
@@ -38,6 +39,20 @@ namespace ModellenBureau4.Data
                 Zip = "1000",
                 Height = 170,
                 Weight = 60,
+            });
+            modelBuilder.Entity<Customer>().HasData(new Customer
+            {
+                Id = 2,
+                CountryId = 1,
+                BirthDate = new DateTime(1972, 1, 16),
+                City = "Brussels2",
+                Email = "bethany@bethanyspieshop2.com",
+                FirstName = "Bethany2",
+                LastName = "Smith2",
+                Gender = Gender.Female,
+                PhoneNumber = "324777888772",
+                Street = "Grote Markt 12",
+                Zip = "1002",
             });
         }
     }
