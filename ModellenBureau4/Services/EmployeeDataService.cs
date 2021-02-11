@@ -50,9 +50,12 @@ namespace ModellenBureau4.Services
                 (await _httpClient.GetStreamAsync($"api/employee/{employeeId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public Task UpdateEmployee(Employee employee)
+        public async Task UpdateEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            var employeeJson =
+                new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync("api/employee", employeeJson);
         }
     }
 }

@@ -16,12 +16,62 @@ namespace ModellenBureau4.Pages
         public string Id { get; set; }
         public Employee Employee { get; set; } = new Employee();
 
+        protected string Message = string.Empty;
+        protected string StatusClass = string.Empty;
+        protected bool Saved;
+
 
 
         protected async override Task OnInitializedAsync()
         {
-            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
+            Saved = false;
+            //Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
+            int.TryParse(Id, out var id);
 
+            if (id == 0)
+            {
+                Employee = new Employee { };
+            }
+            else
+            {
+                Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
+            }
+
+        }
+        protected async Task HandleValidSubmit()
+        {
+            Saved = false;
+
+            if (Employee.Id == 0)
+            {
+                var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
+                if (addedEmployee != null)
+                {
+                    StatusClass = "alert-success";
+                    Message = "New employee added successfully.";
+                    Saved = true;
+                }
+                else
+                {
+                    StatusClass = "alert-danger";
+                    Message = "Something went wrong adding the new employee. Please try again.";
+                    Saved = false;
+                }
+            }
+           
+            else
+            {
+                await EmployeeDataService.UpdateEmployee(Employee);
+                StatusClass = "alert-success";
+                Message = "Employee updated successfully.";
+                Saved = true;
+            }
+        }
+
+        protected void HandleInvalidSubmit()
+        {
+            StatusClass = "alert-danger";
+            Message = "There are some validation errors. Please try again.";
         }
     }
 }
