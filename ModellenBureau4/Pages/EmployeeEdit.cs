@@ -8,21 +8,20 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class CustomerOverview
+    public partial class EmployeeEdit
     {
-
-        public IEnumerable<Customer> Customers { get; set; }
-        public List<Country> Countries { get; set; }
-
         [Inject]
-        public ICustomerDataService CustomerDataService { get; set; }
+        public IEmployeeDataService EmployeeDataService { get; set; }
+        [Parameter]
+        public string Id { get; set; }
+        public Employee Employee { get; set; } = new Employee();
+
+
 
         protected async override Task OnInitializedAsync()
         {
+            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
 
-            Customers = (await CustomerDataService.GetAllCustomers()).ToList();
         }
-
-
     }
 }
