@@ -38,7 +38,6 @@ namespace ModellenBureau4.Api.Models
 
             if (foundCustomer != null)
             {
-                foundCustomer.CountryId = customer.CountryId;
                 foundCustomer.BirthDate = customer.BirthDate;
                 foundCustomer.City = customer.City;
                 foundCustomer.Email = customer.Email;

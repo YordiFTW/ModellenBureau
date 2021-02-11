@@ -9,6 +9,8 @@
     <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
     <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
 
+        <h2>Personal</h2>
+
         <div class="form-group row">
             <label for="firstName" class="col-sm-3">First name: </label>
             <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
@@ -25,11 +27,6 @@
         </div>
 
         <div class="form-group row">
-            <label for="height" class="col-sm-3">Height: </label>
-            <InputNumber id="height" class="form-control col-sm-8" @bind-Value="@Employee.Height" placeholder="Enter height"></InputNumber>
-        </div>
-
-        <div class="form-group row">
             <label for="gender" class="col-sm-3">Gender: </label>
             <InputSelect id="gender" class="form-control col-sm-8" @bind-Value="@Employee.Gender">
                 <option value="@(Gender.Male)">Male</option>
@@ -37,7 +34,55 @@
             </InputSelect>
         </div>
 
+        <div class="form-group row">
+            <label for="height" class="col-sm-3">Height: </label>
+            <InputNumber id="height" class="form-control col-sm-8" @bind-Value="@Employee.Height" placeholder="Enter height"></InputNumber>
+        </div>
+
+        <div class="form-group row">
+            <label for="weight" class="col-sm-3">Weight: </label>
+            <InputNumber id="weight" class="form-control col-sm-8" @bind-Value="@Employee.Weight" placeholder="Enter weight"></InputNumber>
+        </div>
+
+        <h2>Address</h2>
+
+        <div class="form-group row">
+            <label for="city" class="col-sm-3">City: </label>
+            <InputText id="city" class="form-control col-sm-8" @bind-Value="@Employee.City" placeholder="Enter city"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="street" class="col-sm-3">Street: </label>
+            <InputText id="street" class="form-control col-sm-8" @bind-Value="@Employee.Street" placeholder="Enter street"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="zip" class="col-sm-3">Zipcode: </label>
+            <InputText id="zip" class="form-control col-sm-8" @bind-Value="@Employee.Zip" placeholder="Enter zipcode"></InputText>
+        </div>
+
+        <h2>Contact</h2>
+
+        <div class="form-group row">
+            <label for="phonenumber" class="col-sm-3">Phonenumber: </label>
+            <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.PhoneNumber" placeholder="Enter PhoneNumber"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-sm-3">Email: </label>
+            <InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Email" placeholder="Enter Email"></InputText>
+        </div>
+
         <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
+
+        @if (Employee.Id > 0)
+        {
+            <a class="btn btn-danger" @onclick="@DeleteEmployee">
+                Delete
+            </a>
+        }
+
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverView">Back to overview</a>
 
     </EditForm>
 </section>

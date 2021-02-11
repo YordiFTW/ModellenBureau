@@ -2,13 +2,16 @@
 
 <h1 class="page-title">All Customers</h1>
 
+<a class="btn btn-outline-primary" @onclick="@NavigateToOverView">Add Customer</a>
+<p></p>
+
 @if (Customers == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-<table class="table">
+    <table class="table">
 
         <tr>
             <th>Customer Id</th>
@@ -20,17 +23,20 @@ else
 
         @foreach (var customer in Customers)
         {
-        <tr>
-            <td>@customer.Id</td>
-            <td>@customer.FirstName</td>
-            <td>@customer.LastName</td>
-            <td>
-                <a href="@($"customerdetail/{customer.Id}")" class="btn btn-primary table-btn">
-                    Detail
-                </a>
-            </td>
-        </tr>
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>
+                    <a href="@($"customerdetail/{customer.Id}")" class="btn btn-primary table-btn">
+                        Detail
+                    </a>
+                    <a href="@($"customeredit/{customer.Id}")" class="btn btn-primary table-btn">
+                        Edit
+                    </a>
+                </td>
+            </tr>
         }
 
-</table>
+    </table>
 }

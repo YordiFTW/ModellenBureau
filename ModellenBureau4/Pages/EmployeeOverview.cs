@@ -14,6 +14,8 @@ namespace ModellenBureau4.Pages
         public List<Employee> Employees { get; set; }
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -21,7 +23,10 @@ namespace ModellenBureau4.Pages
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 
+        protected void NavigateToOverView()
+        {
+            NavigationManager.NavigateTo("/employeeedit");
+        }
 
-        
     }
 }

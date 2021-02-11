@@ -1,0 +1,84 @@
+﻿@page "/Customeredit"
+@page "/Customeredit/{Id}"
+
+@if (!Saved)
+{
+<h3>CustomerEdit</h3>
+
+<section class="custumer-edit">
+    <h1 class="page-title">Details for @Customer.FirstName @Customer.LastName</h1>
+    <EditForm Model="@Customer" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+        <h2>Personal</h2>
+
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-3">First name: </label>
+            <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Customer.FirstName" placeholder="Enter first name"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-3">Last name: </label>
+            <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Customer.LastName" placeholder="Enter last name"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="birthdate" class="col-sm-3">Birthdate: </label>
+            <InputDate id="birthdate" class="form-control col-sm-8" @bind-Value="@Customer.BirthDate" placeholder="Enter birthdate"></InputDate>
+        </div>
+
+        <div class="form-group row">
+            <label for="gender" class="col-sm-3">Gender: </label>
+            <InputSelect id="gender" class="form-control col-sm-8" @bind-Value="@Customer.Gender">
+                <option value="@(Gender.Male)">Male</option>
+                <option value="@(Gender.Female)">Female</option>
+            </InputSelect>
+        </div>
+
+        <h2>Address</h2>
+
+        <div class="form-group row">
+            <label for="city" class="col-sm-3">City: </label>
+            <InputText id="city" class="form-control col-sm-8" @bind-Value="@Customer.City" placeholder="Enter city"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="street" class="col-sm-3">Street: </label>
+            <InputText id="street" class="form-control col-sm-8" @bind-Value="@Customer.Street" placeholder="Enter street"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="zip" class="col-sm-3">Zipcode: </label>
+            <InputText id="zip" class="form-control col-sm-8" @bind-Value="@Customer.Zip" placeholder="Enter zipcode"></InputText>
+        </div>
+
+        <h2>Contact</h2>
+
+        <div class="form-group row">
+            <label for="phonenumber" class="col-sm-3">Phonenumber: </label>
+            <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Customer.PhoneNumber" placeholder="Enter PhoneNumber"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-sm-3">Email: </label>
+            <InputText id="email" class="form-control col-sm-8" @bind-Value="@Customer.Email" placeholder="Enter Email"></InputText>
+        </div>
+
+        <button type="submit" class="btn btn-primary edit-btn">Save Customer</button>
+
+        @if (Customer.Id > 0)
+        {
+            <a class="btn btn-danger" @onclick="@DeleteCustomer">
+                Delete
+            </a>
+        }
+
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverView">Back to overview</a>
+
+    </EditForm>
+</section>
+
+}
+else
+{
+    <div class="alert @StatusClass">@Message</div>
+}

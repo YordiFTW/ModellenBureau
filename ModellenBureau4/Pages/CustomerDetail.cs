@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using ModellenBureau4.Services;
 using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
@@ -14,13 +15,20 @@ namespace ModellenBureau4.Pages
         public Customer Customer { get; set; } = new Customer();
 
         public IEnumerable<Customer> Customers { get; set; }
-        public List<Country> Countries { get; set; }
+        [Inject]
+        public ICustomerDataService CustomerDataService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            Customer = await CustomerDataService.GetCustomerDetails(int.Parse(Id));
 
+        }
 
-            return base.OnInitializedAsync();
+        protected void NavigateToOverView()
+        {
+            NavigationManager.NavigateTo("/customeroverview");
         }
 
     }

@@ -45,12 +45,6 @@
 
             <h2>Adrress</h2>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Country</label>
-                <div class="col-sm-8">
-                    <label type="text" class="form-control-plaintext">@Customer.CountryId</label>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">City</label>
                 <div class="col-sm-8">
                     <label type="text" class="form-control-plaintext">@Customer.City</label>
@@ -83,6 +77,8 @@
                     <label type="text" class="form-control-plaintext">@Customer.Email</label>
                 </div>
             </div>
+            <a class="btn btn-outline-primary" @onclick="@NavigateToOverView">Back to overview</a>
+            <p></p>
         </div>
     </div>
 </div>

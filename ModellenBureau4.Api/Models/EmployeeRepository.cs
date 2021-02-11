@@ -38,7 +38,6 @@ namespace ModellenBureau4.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.CountryId = employee.CountryId;
                 foundEmployee.BirthDate = employee.BirthDate;
                 foundEmployee.City = employee.City;
                 foundEmployee.Email = employee.Email;

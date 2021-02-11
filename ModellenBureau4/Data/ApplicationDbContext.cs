@@ -27,7 +27,6 @@ namespace ModellenBureau4.Data
             modelBuilder.Entity<Employee>().HasData(new Employee
             {
                 Id = 1,
-                CountryId = 1,
                 BirthDate = new DateTime(1979, 1, 16),
                 City = "Brussels",
                 Email = "bethany@bethanyspieshop.com",
@@ -43,7 +42,6 @@ namespace ModellenBureau4.Data
             modelBuilder.Entity<Customer>().HasData(new Customer
             {
                 Id = 2,
-                CountryId = 1,
                 BirthDate = new DateTime(1972, 1, 16),
                 City = "Brussels2",
                 Email = "bethany@bethanyspieshop2.com",

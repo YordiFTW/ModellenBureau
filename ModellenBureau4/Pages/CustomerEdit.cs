@@ -8,13 +8,13 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class EmployeeEdit
+    public partial class CustomerEdit
     {
         [Inject]
-        public IEmployeeDataService EmployeeDataService { get; set; }
+        public ICustomerDataService CustomerDataService { get; set; }
         [Parameter]
         public string Id { get; set; }
-        public Employee Employee { get; set; } = new Employee();
+        public Customer Customer { get; set; } = new Customer();
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
@@ -28,16 +28,16 @@ namespace ModellenBureau4.Pages
         protected async override Task OnInitializedAsync()
         {
             Saved = false;
-            //Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
+            //Customer = await CustomerDataService.GetCustomerDetails(int.Parse(Id));
             int.TryParse(Id, out var id);
 
             if (id == 0)
             {
-                Employee = new Employee { };
+                Customer = new Customer { };
             }
             else
             {
-                Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
+                Customer = await CustomerDataService.GetCustomerDetails(int.Parse(Id));
             }
 
         }
@@ -45,28 +45,28 @@ namespace ModellenBureau4.Pages
         {
             Saved = false;
 
-            if (Employee.Id == 0)
+            if (Customer.Id == 0)
             {
-                var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
-                if (addedEmployee != null)
+                var addedCustomer = await CustomerDataService.AddCustomer(Customer);
+                if (addedCustomer != null)
                 {
                     StatusClass = "alert-success";
-                    Message = "New employee added successfully.";
+                    Message = "New Customer added successfully.";
                     Saved = true;
                 }
                 else
                 {
                     StatusClass = "alert-danger";
-                    Message = "Something went wrong adding the new employee. Please try again.";
+                    Message = "Something went wrong adding the new Customer. Please try again.";
                     Saved = false;
                 }
             }
            
             else
             {
-                await EmployeeDataService.UpdateEmployee(Employee);
+                await CustomerDataService.UpdateCustomer(Customer);
                 StatusClass = "alert-success";
-                Message = "Employee updated successfully.";
+                Message = "Customer updated successfully.";
                 Saved = true;
             }
         }
@@ -77,16 +77,16 @@ namespace ModellenBureau4.Pages
             Message = "There are some validation errors. Please try again.";
         }
 
-        protected async Task DeleteEmployee()
+        protected async Task DeleteCustomer()
         {
-            await EmployeeDataService.DeleteEmployee(Employee.Id);
+            await CustomerDataService.DeleteCustomer(Customer.Id);
             StatusClass = "alert-success";
             Message = "Deleted successfully";
             Saved = true;
         }
         protected void NavigateToOverView()
         {
-            NavigationManager.NavigateTo("/employeeoverview");
+            NavigationManager.NavigateTo("/Customeroverview");
         }
     }
 }

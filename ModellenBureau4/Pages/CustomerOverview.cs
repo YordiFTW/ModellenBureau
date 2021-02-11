@@ -12,10 +12,12 @@ namespace ModellenBureau4.Pages
     {
 
         public IEnumerable<Customer> Customers { get; set; }
-        public List<Country> Countries { get; set; }
 
         [Inject]
         public ICustomerDataService CustomerDataService { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -23,6 +25,9 @@ namespace ModellenBureau4.Pages
             Customers = (await CustomerDataService.GetAllCustomers()).ToList();
         }
 
-
+        protected void NavigateToOverView()
+        {
+            NavigationManager.NavigateTo("/customeredit");
+        }
     }
 }

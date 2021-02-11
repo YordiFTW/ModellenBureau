@@ -15,12 +15,19 @@ namespace ModellenBureau4.Pages
         public Employee Employee { get; set; } = new Employee();
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
 
         protected async override Task OnInitializedAsync()
         {
             Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
 
+        }
+
+        protected void NavigateToOverView()
+        {
+            NavigationManager.NavigateTo("/employeeoverview");
         }
     }
 }
