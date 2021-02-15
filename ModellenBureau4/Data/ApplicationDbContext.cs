@@ -7,7 +7,7 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AspNetUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
