@@ -47,6 +47,8 @@ namespace ModellenBureau4.Api.Models
                 foundCustomer.PhoneNumber = customer.PhoneNumber;
                 foundCustomer.Street = customer.Street;
                 foundCustomer.Zip = customer.Zip;
+                foundCustomer.BTWnum = customer.BTWnum;
+                foundCustomer.KvKnum = customer.KvKnum;
 
                 _appDbContext.SaveChanges();
 

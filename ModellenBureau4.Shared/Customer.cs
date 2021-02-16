@@ -26,5 +26,9 @@ namespace ModellenBureau4.Shared
         public string City { get; set; }
         [Required]
         public Gender Gender { get; set; }
+        [Required]
+        public string KvKnum { get; set; }
+        [Required]
+        public string BTWnum { get; set; }
     }
 }

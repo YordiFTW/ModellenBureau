@@ -51,6 +51,8 @@ namespace ModellenBureau4.Data
                 PhoneNumber = "324777888772",
                 Street = "Grote Markt 12",
                 Zip = "1002",
+                BTWnum = "645324",
+                KvKnum = "6786234",
             });
         }
     }
