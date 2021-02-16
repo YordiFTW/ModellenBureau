@@ -8,26 +8,33 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class CustomerOverview
+    public partial class CustomerVerify
     {
+        [Parameter]
+        public string Id { get; set; }
+        public Customer Customer { get; set; } = new Customer();
 
         public IEnumerable<Customer> Customers { get; set; }
-
         [Inject]
         public ICustomerDataService CustomerDataService { get; set; }
-
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
+            Customer = await CustomerDataService.GetCustomerDetails(int.Parse(Id));
 
-            Customers = (await CustomerDataService.GetAllCustomers()).Where(x => x.Verified == true).ToList();
         }
 
         protected void NavigateToOverView()
         {
-            NavigationManager.NavigateTo("/customeredit");
+            NavigationManager.NavigateTo("/customeroverview");
         }
+        protected async Task VerifyCustomer()
+        {
+            Customer.Verified = true;
+            await CustomerDataService.UpdateCustomer(Customer);
+        }
+
     }
 }

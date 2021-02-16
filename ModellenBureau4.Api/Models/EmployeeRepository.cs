@@ -49,6 +49,7 @@ namespace ModellenBureau4.Api.Models
                 foundEmployee.Zip = employee.Zip;
                 foundEmployee.Height = employee.Height;
                 foundEmployee.Weight = employee.Weight;
+                foundEmployee.Verified = employee.Verified;
 
                 _appDbContext.SaveChanges();
 

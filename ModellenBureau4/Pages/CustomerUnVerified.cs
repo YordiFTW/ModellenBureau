@@ -8,24 +8,24 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class EmployeeOverview : ComponentBase
+    public partial class CustomerUnVerified : ComponentBase
     {
 
-        public List<Employee> Employees { get; set; }
+        public List<Customer> Customers { get; set; }
         [Inject]
-        public IEmployeeDataService EmployeeDataService { get; set; }
+        public ICustomerDataService CustomerDataService { get; set; }
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
 
-            Employees = (await EmployeeDataService.GetAllEmployees()).Where(x => x.Verified == true).ToList();
+            Customers = (await CustomerDataService.GetAllCustomers()).Where(x => x.Verified == false).ToList();
         }
 
         protected void NavigateToOverView()
         {
-            NavigationManager.NavigateTo("/employeeedit");
+            NavigationManager.NavigateTo("/customeredit");
         }
 
     }

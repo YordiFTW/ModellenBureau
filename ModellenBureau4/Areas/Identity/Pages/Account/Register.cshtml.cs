@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using ModellenBureau4.Data;
+using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Api.Areas.Identity.Pages.Account
 {
@@ -61,6 +62,27 @@ namespace ModellenBureau4.Api.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public string FirstName { get; set; }
+            [Required]
+            public string LastName { get; set; }
+            [Required]
+            public DateTime BirthDate { get; set; }
+            [Required]
+            public string Street { get; set; }
+            [Required]
+            public string Zip { get; set; }
+            [Required]
+            public string City { get; set; }
+            [Required]
+            public Gender Gender { get; set; }
+            [Required]
+            public int Weight { get; set; }
+            [Required]
+            public int Height { get; set; }
+            [Required]
+            public string PhoneNumber { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -75,7 +97,7 @@ namespace ModellenBureau4.Api.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AspNetUser { UserName = Input.Email, Email = Input.Email };
+                var user = new AspNetUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, BirthDate = Input.BirthDate, Street = Input.Street, Zip = Input.Zip, City = Input.City, Gender = Input.Gender, Weight = Input.Weight, Height = Input.Height, PhoneNumber = Input.PhoneNumber };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

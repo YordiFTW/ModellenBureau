@@ -30,5 +30,7 @@ namespace ModellenBureau4.Shared
         public string KvKnum { get; set; }
         [Required]
         public string BTWnum { get; set; }
+
+        public bool Verified { get; set; }
     }
 }

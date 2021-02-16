@@ -31,6 +31,8 @@ namespace ModellenBureau4.Shared
         [Required]
         public int Height { get; set; }
 
+        public bool Verified { get; set; }
+
     }
 
 }

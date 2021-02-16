@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ModellenBureau4.Data;
 
 namespace ModellenBureau4.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210216110446_13")]
+    partial class _13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,9 +229,6 @@ namespace ModellenBureau4.Data.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("Verified")
-                        .HasColumnType("bit");
-
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -310,9 +309,6 @@ namespace ModellenBureau4.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Verified")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Zip")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -335,7 +331,6 @@ namespace ModellenBureau4.Data.Migrations
                             LastName = "Smith2",
                             PhoneNumber = "324777888772",
                             Street = "Grote Markt 12",
-                            Verified = false,
                             Zip = "1002"
                         });
                 });
@@ -380,9 +375,6 @@ namespace ModellenBureau4.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Verified")
-                        .HasColumnType("bit");
-
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -407,7 +399,6 @@ namespace ModellenBureau4.Data.Migrations
                             LastName = "Smith",
                             PhoneNumber = "324777888773",
                             Street = "Grote Markt 1",
-                            Verified = false,
                             Weight = 60,
                             Zip = "1000"
                         });

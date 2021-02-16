@@ -49,6 +49,7 @@ namespace ModellenBureau4.Api.Models
                 foundCustomer.Zip = customer.Zip;
                 foundCustomer.BTWnum = customer.BTWnum;
                 foundCustomer.KvKnum = customer.KvKnum;
+                foundCustomer.Verified = customer.Verified;
 
                 _appDbContext.SaveChanges();
 

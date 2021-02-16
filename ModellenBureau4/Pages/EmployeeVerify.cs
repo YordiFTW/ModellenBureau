@@ -8,25 +8,34 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class EmployeeOverview : ComponentBase
+    public partial class EmployeeVerify
     {
-
-        public List<Employee> Employees { get; set; }
+        [Parameter]
+        public string Id { get; set; }
+        public Employee Employee { get; set; } = new Employee();
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+
         protected async override Task OnInitializedAsync()
         {
+            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(Id));
 
-            Employees = (await EmployeeDataService.GetAllEmployees()).Where(x => x.Verified == true).ToList();
         }
 
         protected void NavigateToOverView()
         {
-            NavigationManager.NavigateTo("/employeeedit");
+            NavigationManager.NavigateTo("/employeeoverview");
         }
 
+        protected async Task VerifyEmployee()
+        {
+            Employee.Verified = true;
+            await EmployeeDataService.UpdateEmployee(Employee);
+        }
     }
 }
+
+ 

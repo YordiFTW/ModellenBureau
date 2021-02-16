@@ -1,4 +1,4 @@
-﻿@page "/employeedetail/{Id}"
+﻿@page "/employeeverify/{Id}"
 
 <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
 
@@ -95,6 +95,7 @@
                     <label type="text" class="form-control-plaintext">@Employee.Verified</label>
                 </div>
             </div>
+            <a class="btn btn-success" @onclick="@VerifyEmployee">Verify</a>
             <a class="btn btn-outline-primary" @onclick="@NavigateToOverView">Back to overview</a>
             <p></p>
         </div>

@@ -8,7 +8,7 @@ using ModellenBureau4.Shared;
 
 namespace ModellenBureau4.Pages
 {
-    public partial class EmployeeOverview : ComponentBase
+    public partial class EmployeeUnVerified : ComponentBase
     {
 
         public List<Employee> Employees { get; set; }
@@ -20,7 +20,7 @@ namespace ModellenBureau4.Pages
         protected async override Task OnInitializedAsync()
         {
 
-            Employees = (await EmployeeDataService.GetAllEmployees()).Where(x => x.Verified == true).ToList();
+            Employees = (await EmployeeDataService.GetAllEmployees()).Where(x => x.Verified == false).ToList();
         }
 
         protected void NavigateToOverView()
