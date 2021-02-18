@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -56,6 +57,21 @@ namespace ModellenBureau4.Services
                 new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
 
             await _httpClient.PutAsync("api/employee", employeeJson);
+        }
+
+        public async Task<string> UploadProductImage(MultipartFormDataContent content)
+        {
+            var postResult = await _httpClient.PostAsync("api/upload", content);
+            var postContent = await postResult.Content.ReadAsStringAsync();
+            if (!postResult.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(postContent);
+            }
+            else
+            {
+                var imgUrl = Path.Combine(_httpClient.BaseAddress.AbsolutePath, postContent);
+                return imgUrl;
+            }
         }
     }
 }

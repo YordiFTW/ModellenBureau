@@ -6,7 +6,7 @@ namespace ModellenBureau4.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : Controller
+    public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepository;
 

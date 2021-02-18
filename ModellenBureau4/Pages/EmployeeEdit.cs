@@ -71,6 +71,8 @@ namespace ModellenBureau4.Pages
             }
         }
 
+        private void AssignImageUrl(string imgUrl) => Employee.ImageUrl = imgUrl;
+
         protected void HandleInvalidSubmit()
         {
             StatusClass = "alert-danger";

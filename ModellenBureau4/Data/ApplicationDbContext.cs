@@ -38,6 +38,7 @@ namespace ModellenBureau4.Data
                 Zip = "1000",
                 Height = 170,
                 Weight = 60,
+                ImageUrl = "https://localhost:44340/Images/kiwi.png",
             });
             modelBuilder.Entity<Customer>().HasData(new Customer
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using ModellenBureau4.Shared;
 
@@ -13,5 +14,6 @@ namespace ModellenBureau4.Services
         Task<Employee> AddEmployee(Employee employee);
         Task UpdateEmployee(Employee employee);
         Task DeleteEmployee(int employeeId);
+        Task<string> UploadProductImage(MultipartFormDataContent content);
     }
 }

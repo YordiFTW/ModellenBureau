@@ -30,6 +30,8 @@ namespace ModellenBureau4.Shared
         public int Weight { get; set; }
         [Required]
         public int Height { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
 
         public bool Verified { get; set; }
 

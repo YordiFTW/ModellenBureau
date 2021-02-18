@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using ModellenBureau4.Areas.Identity;
 using ModellenBureau4.Data;
 using ModellenBureau4.Services;
+using Tewr.Blazor.FileReader;
 
 namespace ModellenBureau4
 {
@@ -44,6 +45,7 @@ namespace ModellenBureau4
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<AspNetUser>>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddFileReaderService();
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:44340");
