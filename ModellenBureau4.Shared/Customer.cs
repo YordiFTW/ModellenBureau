@@ -32,5 +32,7 @@ namespace ModellenBureau4.Shared
         public string BTWnum { get; set; }
 
         public bool Verified { get; set; }
+
+        public string PhotoPath { get; set; }
     }
 }

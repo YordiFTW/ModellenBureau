@@ -17,6 +17,7 @@ namespace ModellenBureau4.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<AspNetUser> AspNetUser { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
