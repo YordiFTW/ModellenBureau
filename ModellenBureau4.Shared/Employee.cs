@@ -33,6 +33,8 @@ namespace ModellenBureau4.Shared
 
         public bool Verified { get; set; }
 
+        public string PhotoPath { get; set; }
+
     }
 
 }

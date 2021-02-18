@@ -14,6 +14,7 @@ else
     <table class="table">
 
         <tr>
+            <th></th>
             <th>Customer Id</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -24,6 +25,7 @@ else
         @foreach (var customer in Customers)
         {
             <tr>
+                <td><img src="@customer.PhotoPath" width="50" height="50" /></td>
                 <td>@customer.Id</td>
                 <td>@customer.FirstName</td>
                 <td>@customer.LastName</td>
